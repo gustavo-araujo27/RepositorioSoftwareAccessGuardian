@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Horária Mensal</title>
+    <link rel="stylesheet" href="mensal.css">
+</head>
+<body>
+    <div class="modal-fundo">
+        <section class="modal">
+            <header class="cabecalho">
+                <div>
+                    <span class="identificacao">GRADE HORÁRIA</span>
+                    <h1>Visualização mensal</h1>
+                </div>
+
+                <div class="periodo">
+                    <button id="mes-anterior" aria-label="Mês anterior">‹</button>
+                    <span id="mes-atual"></span>
+                    <button id="proximo-mes" aria-label="Próximo mês">›</button>
+                </div>
+            </header>
+
+            <div class="legenda">
+                <span><i class="cor-aula"></i> Aula</span>
+                <span><i class="cor-atividade"></i> Atividade</span>
+            </div>
+
+            <div class="calendario-container">
+                <div class="calendario" id="calendario">
+                    <div class="dia-semana">Dom</div>
+                    <div class="dia-semana">Seg</div>
+                    <div class="dia-semana">Ter</div>
+                    <div class="dia-semana">Qua</div>
+                    <div class="dia-semana">Qui</div>
+                    <div class="dia-semana">Sex</div>
+                    <div class="dia-semana">Sáb</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="mensal.js"></script>
+</body>
+</html>

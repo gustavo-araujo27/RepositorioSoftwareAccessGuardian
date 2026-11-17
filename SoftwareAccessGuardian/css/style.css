@@ -1,0 +1,597 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.settings-main {
+    background-color: transparent;
+    border: none;
+}
+
+.main-content {
+    background-color: #174493;
+    flex: 1;
+    padding-bottom: 100px;
+}
+
+.settings-main {
+    margin-left: 5px;
+    margin-top: 5px;
+    width: fit-content;
+    cursor: pointer;
+    position: absolute;
+}
+
+.logo-header {
+    height: 80px;
+    width: 80px;
+    margin-right: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    float: right;
+}
+
+.content-page {
+    height: auto;
+    min-height: 550px;
+    width: auto;
+    min-width: 800px;
+    justify-self: center;
+    background-color: #F7FAFF;
+    display: flex;
+    border-radius: 10px;
+    margin-top: 10vw;
+}
+
+.bloco1-content-page {
+    display: block;
+    height: auto;
+    width: fit-content;
+    min-width: 420px;
+    justify-items: center;
+    padding-top: 40px;
+}
+
+.txt-bemVindo-content-page {
+    font-size: 23px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    color: #222222;
+}
+
+.txt-introdutivo-content-page {
+    text-align: justify;
+    font-family: Arial, Helvetica, sans-serif;
+    max-width: 300px;
+    font-size: 13px;
+    color: #222222;
+    margin: 20px;
+    margin-top: 30px;
+}
+
+.logo-content-page {
+    display: flex;
+    width: 190px;
+    height: 190px;
+    margin: 0 auto;
+}
+
+.bloco2-content-page {
+    border-left: 1px solid black;
+    display: block;
+    height: auto;
+    width: fit-content;
+    min-width: 420px;
+    justify-items: center;
+    align-items: center;
+    padding-top: 120px;
+}
+
+.form-login-content-page {
+    display: flex;
+    flex-direction: column;
+}
+
+.title-login-content-page {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 23px;
+    font-weight: 600;
+    color: #222222;
+}
+
+.input-email-content-page {
+    width: 350px;
+    height: 38px;
+    border: 1px solid #222222;
+    padding-left: 10px;
+    margin-top: 68px;
+}
+
+.input-senha-content-page {
+    width: 350px;
+    height: 38px;
+    border: 1px solid #222222;
+    padding-left: 10px;
+    margin-top: 30px;
+}
+
+.input-email-content-page:focus,
+.input-senha-content-page:focus {
+    border: .5px solid #DE7820;
+    outline: none;
+}
+
+.txt-esqueceuSenha-content-page {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: #222222;
+    padding-left: 12px;
+    padding-top: 10px;
+}
+
+.txt-esqueceuSenha-content-page a {
+    color: #222222;
+    text-decoration: none;
+}
+
+.btn-login-content-page {
+    width: 280px;
+    margin: 0 auto;
+    height: 40px;
+    background-color: #DE7820;
+    border: none;
+    border-radius: 5px;
+    color: #F7FAFF;
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 40px;
+    cursor: pointer;
+}
+
+.txt-cadastrase-content-page {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: #222222;
+    padding-left: 38px;
+    padding-top: 10px;
+}
+
+.txt-cadastrase-content-page a {
+    color: #222222;
+    text-decoration: none;
+}
+
+.campoConfig2 {
+    display: none;
+    position: absolute;
+    background-color: #FFFFFF;
+    font-family: Hind Mysuru, sans-serif;
+    height: 300px;
+    padding: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+    transition: .5s ease-in-out;
+    z-index: 2;
+}
+
+.campoConfig2 ul {
+    list-style: none;
+}
+
+.itemTextConfig,
+.textModoIluminacao,
+.textAcessibilidade {
+    color: #000000;
+
+}
+
+.itemTextConfig,
+.textModoIluminacao {
+    margin-bottom: 10px;
+}
+
+.textAcessibilidade {
+    margin-top: 10px;
+}
+
+.itemModoIluminacao,
+.itemConfig1,
+.itemConfig2,
+.itemConfig3,
+.itemConfig4 {
+    background-color: #DE7820;
+    color: #FFFFFF;
+}
+
+.itemConfig1,
+.itemConfig2,
+.itemConfig3,
+.itemConfig4 {
+    height: 30px;
+    margin-top: 10px;
+    border-radius: 5px;
+    align-content: center;
+    padding-left: 5px;
+}
+
+.ativo {
+    display: block;
+    transition: .5s ease-in-out;
+}
+
+.btnFecharMenu {
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #222222;
+}
+
+.itemModoIluminacao {
+    border-radius: 5px;
+}
+
+.itemModoIluminacao select {
+    width: 100%;
+    height: 30px;
+    background-color: #DE7820;
+    color: #FFFFFF;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid #DE7820;
+}
+
+.itemModoIluminacao select:focus {
+    outline: none;
+}
+
+.btnFecharMenu:hover {
+    color: #DE7820;
+}
+
+#resultadoLogin {
+    position: absolute;
+    margin-top: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #030303;
+}
+
+.campoSobreTelaEmail {
+    position: fixed;
+    display: none;
+    background-color: #F7FAFF;
+    width: 400px;
+    height: 250px;
+    border: 1px solid black;
+    min-height: auto;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    justify-items: center;
+    padding: 10px 0 12px 0;
+
+
+    /* Centralização */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.campoSobreTelaEmail input {
+    width: 350px;
+    height: 38px;
+    border: 1px solid #222222;
+    border-radius: 6px;
+    padding-left: 5px;
+    margin-bottom: 10px;
+}
+
+.enviarCodigoSobreTelaEmail {
+    background-color: #DE7820;
+    border: none;
+    height: 38px;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #F7FAFF;
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+.campoSobreTelaEmail input:focus {
+    border: .5px solid #DE7820;
+    outline: none;
+}
+
+.titleSobreTela {
+    font-size: 20px;
+    padding-bottom: 10px;
+    padding-top: 35px;
+}
+
+.campoSobreTelaEmail form {
+    display: flex;
+    flex-direction: column;
+}
+
+.ativoCampoSobreTelaEmail {
+    display: flex;
+
+}
+
+.btnFecharSobreTelaEmail {
+    margin-top: 0;
+    margin-right: 7px;
+    float: right;
+    width: 25px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #222222;
+}
+
+.btnFecharSobreTelaEmail:hover {
+    color: #DE7820;
+}
+
+.btnCliqueAqui {
+    background-color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+}
+
+/**/
+
+
+.campoSobreTelaCodigo {
+    position: fixed;
+    display: none;
+    background-color: #F7FAFF;
+    width: 400px;
+    height: 250px;
+    border: 1px solid black;
+    min-height: auto;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    justify-items: center;
+    padding: 10px 0 12px 0;
+
+
+    /* Centralização */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.campoSobreTelaCodigo input {
+    width: 350px;
+    height: 38px;
+    border: 1px solid #222222;
+    border-radius: 6px;
+    padding-left: 5px;
+    margin-bottom: 10px;
+}
+
+.btnConfirmarSobreTelaCodigo {
+    background-color: #DE7820;
+    border: none;
+    height: 38px;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #F7FAFF;
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+.campoSobreTelaCodigo input:focus {
+    border: .5px solid #DE7820;
+    outline: none;
+}
+
+.titleSobreTela {
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+
+.campoSobreTelaCodigo form {
+    display: flex;
+    flex-direction: column;
+}
+
+.ativoCampoSobreTelaCodigo {
+    display: flex;
+
+}
+
+.btnFecharSobreTelaCodigo {
+    margin-top: 0;
+    margin-right: 7px;
+    float: right;
+    width: 25px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #222222;
+}
+
+.btnFecharSobreTelaCodigo:hover {
+    color: #DE7820;
+}
+
+/**/
+
+
+.campoSobreTelaSenha {
+    position: fixed;
+    display: none;
+    background-color: #F7FAFF;
+    width: 400px;
+    height: 250px;
+    border: 1px solid black;
+    min-height: auto;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    justify-items: center;
+    padding: 10px 0 12px 0;
+
+
+    /* Centralização */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.campoSobreTelaSenha input {
+    width: 350px;
+    height: 38px;
+    border: 1px solid #222222;
+    border-radius: 6px;
+    padding-left: 5px;
+    margin-bottom: 10px;
+}
+
+.btnVoltarLoginSobreTelaCodigo {
+    background-color: #DE7820;
+    border: none;
+    height: 38px;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #F7FAFF;
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+.campoSobreTelaSenha input:focus {
+    border: .5px solid #DE7820;
+    outline: none;
+}
+
+.titleSobreTela {
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+
+.campoSobreTelaSenha form {
+    display: flex;
+    flex-direction: column;
+}
+
+.ativoCampoSobreTelaSenha {
+    display: flex;
+}
+
+.btnFecharSobreTelaSenha {
+    margin-top: 0;
+    margin-right: 7px;
+    float: right;
+    width: 25px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #222222;
+}
+
+.btnFecharSobreTelaSenha:hover {
+    color: #DE7820;
+}
+
+.campo {
+    display: flex;
+    position: relative;
+    width: fit-content;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+.campo select {
+    width: 100%;
+    height: 30px;
+    padding: 0 30px 0 10px;
+    border: 1px solid #222;
+    border-radius: 3px;
+    font-size: 16px;
+    outline: none;
+    background: #f7faff;
+    color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+
+.opcSeguranca {
+    background-color: #F7FAFF;
+    color: #000000;
+}
+
+.opcGestor {
+    background-color: #F7FAFF;
+    color: #000000;
+}
+
+.opcSeguranca:hover {
+    background-color: #DE7820;
+    color: #F7FAFF;
+}
+
+.opcGestor:hover {
+    background-color: #DE7820;
+    color: #F7FAFF;
+}
+
+.campo input::placeholder {
+    color: #333;
+    opacity: 1;
+}
+
+.campo input:focus,
+.campo select:focus {
+    border-color: #174593;
+}
+
+.select-container select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+
+.seta {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    border-right: 1.5px solid #111;
+    border-bottom: 1.5px solid #111;
+    transform: translateY(-70%) rotate(45deg);
+    pointer-events: none;
+}
+.select-container2{margin-top: 10px;}

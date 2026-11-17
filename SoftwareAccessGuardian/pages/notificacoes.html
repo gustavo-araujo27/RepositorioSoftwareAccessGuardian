@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificações</title>
+    <link rel="stylesheet" href="notificacoes.css">
+</head>
+<body>
+    <div class="modal-fundo">
+        <section class="modal">
+            <header class="cabecalho">
+                <div>
+                    <span class="identificacao">CENTRAL DE AVISOS</span>
+                    <h1>Notificações</h1>
+                    <p>Confira os avisos e atualizações do sistema.</p>
+                </div>
+
+                <span class="contador" id="contador">3 notificações</span>
+            </header>
+
+            <div class="notificacoes" id="notificacoes">
+
+                <article class="notificacao aberta">
+                    <button class="notificacao-cabecalho" aria-expanded="true">
+                        <span class="indicador"></span>
+
+                        <span class="informacoes">
+                            <strong>Notificação 1</strong>
+                            <small>Atenção</small>
+                        </span>
+
+                        <span class="seta">−</span>
+                    </button>
+
+                    <div class="notificacao-conteudo">
+                        <p>
+                            Você está com 80% de frequência e mais de 50%
+                            de atividades pendentes.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="notificacao">
+                    <button class="notificacao-cabecalho" aria-expanded="false">
+                        <span class="indicador"></span>
+
+                        <span class="informacoes">
+                            <strong>Notificação 2</strong>
+                            <small>Lembrete</small>
+                        </span>
+
+                        <span class="seta">+</span>
+                    </button>
+
+                    <div class="notificacao-conteudo" hidden>
+                        <p>
+                            Confira os horários das próximas atividades
+                            e mantenha sua grade atualizada.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="notificacao">
+                    <button class="notificacao-cabecalho" aria-expanded="false">
+                        <span class="indicador"></span>
+
+                        <span class="informacoes">
+                            <strong>Notificação 3</strong>
+                            <small>Aviso</small>
+                        </span>
+
+                        <span class="seta">+</span>
+                    </button>
+
+                    <div class="notificacao-conteudo" hidden>
+                        <p>
+                            Existem horários disponíveis para ajuste
+                            na grade.
+                        </p>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+    </div>
+
+    <script src="notificacoes.js"></script>
+</body>
+</html>

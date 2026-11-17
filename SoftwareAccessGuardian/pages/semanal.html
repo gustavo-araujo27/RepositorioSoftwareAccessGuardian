@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Horária Semanal</title>
+    <link rel="stylesheet" href="semanal.css">
+</head>
+<body>
+    <div class="modal-fundo">
+        <section class="modal">
+            <header class="cabecalho">
+                <div>
+                    <span class="identificacao">GRADE HORÁRIA</span>
+                    <h1>Visualização semanal</h1>
+                </div>
+
+                <div class="periodo">
+                    <button id="semana-anterior" aria-label="Semana anterior">‹</button>
+                    <span id="periodo-atual"></span>
+                    <button id="proxima-semana" aria-label="Próxima semana">›</button>
+                </div>
+            </header>
+
+            <div class="legenda">
+                <span><i class="cor-aula"></i> Aula</span>
+                <span><i class="cor-atividade"></i> Atividade</span>
+            </div>
+
+            <div class="grade-container">
+                <div class="grade-semanal" id="grade-semanal">
+                    <div class="celula cabecalho-hora">Horário</div>
+                    <div class="celula cabecalho-dia">Segunda</div>
+                    <div class="celula cabecalho-dia">Terça</div>
+                    <div class="celula cabecalho-dia">Quarta</div>
+                    <div class="celula cabecalho-dia">Quinta</div>
+                    <div class="celula cabecalho-dia">Sexta</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="semanal.js"></script>
+</body>
+</html>
