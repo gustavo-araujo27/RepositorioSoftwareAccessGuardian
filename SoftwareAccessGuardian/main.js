@@ -101,13 +101,13 @@ ipcMain.handle('loginUser', async (event, dados) => {
 
         // Registra os dados corretos do usuário autenticado
         sessoesAutenticadas.set(event.sender.id, {
-            nome: user.nome_seguranca,
-            email: user.email_seguranca
+            nome: user.nome,
+            email: user.email
         });
 
         console.log('Sessão autenticada:', {
-            possuiNome: Boolean(user.nome_seguranca),
-            possuiEmail: Boolean(user.email_seguranca)
+            possuiNome: Boolean(user.nome),
+            possuiEmail: Boolean(user.email)
         });
 
         return {

@@ -16,7 +16,7 @@
     "serialport": "^13.0.0"
   },
   "devDependencies": {
-    "electron": "^43.8.8",
+    "electron": "^43.8.10",
     "electron-builder": "^26.15.3"
   },
   "build": {
