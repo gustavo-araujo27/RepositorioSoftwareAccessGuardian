@@ -24,7 +24,10 @@ const {
 } = require('./database/recuperacaoSenha');
 
 // Serviço de envio de e-mail
-const { enviarCodigoEmail, enviarReclamacaoEmail } = require('./services/emailService');
+const {
+    enviarCodigoEmail,
+    enviarReclamacaoEmail
+} = require('./services/emailService');
 
 // Armazena as sessões dos usuários autenticados
 const sessoesAutenticadas = new Map();
@@ -36,6 +39,7 @@ let janelaSeguranca;
 // ==================================================
 
 function janelaInicio() {
+
     const { width, height } =
         screen.getPrimaryDisplay().workAreaSize;
 
@@ -62,7 +66,6 @@ function janelaInicio() {
 
     janelaSeguranca.loadFile('pages/inicio.html');
 
-
     return janelaSeguranca;
 }
 
@@ -71,12 +74,14 @@ function janelaInicio() {
 // ==================================================
 
 app.whenReady().then(() => {
+
     nativeTheme.themeSource = 'light';
 
     const janela = janelaInicio();
 
     require('./arduino/arduino.js')
         .iniciarArduino(janela);
+
 });
 
 // ==================================================
@@ -84,13 +89,30 @@ app.whenReady().then(() => {
 // ==================================================
 
 ipcMain.handle('loginUser', async (event, dados) => {
+
     try {
-        const user = await loginUser(
-            dados.email,
+
+        // Verifica os dados recebidos
+        if (
+            !dados ||
+            typeof dados.email !== 'string' ||
+            typeof dados.senha !== 'string'
+        ) {
+            return {
+                success: false,
+                user: null
+            };
+        }
+
+        // Consulta o banco de dados
+        const resultado = await loginUser(
+            dados.email.trim(),
             dados.senha
         );
 
-        if (!user) {
+        // Verifica se o login foi realizado
+        if (!resultado.success) {
+
             sessoesAutenticadas.delete(event.sender.id);
 
             return {
@@ -99,15 +121,20 @@ ipcMain.handle('loginUser', async (event, dados) => {
             };
         }
 
-        // Registra os dados corretos do usuário autenticado
+        // Obtém os dados do usuário encontrado
+        const user = resultado.user;
+
+        // Registra a sessão autenticada
         sessoesAutenticadas.set(event.sender.id, {
             nome: user.nome,
-            email: user.email
+            email: user.email,
+            tipo: user.tipo
         });
 
         console.log('Sessão autenticada:', {
             possuiNome: Boolean(user.nome),
-            possuiEmail: Boolean(user.email)
+            possuiEmail: Boolean(user.email),
+            tipo: user.tipo
         });
 
         return {
@@ -116,13 +143,17 @@ ipcMain.handle('loginUser', async (event, dados) => {
         };
 
     } catch (erro) {
+
         console.error('Erro ao realizar login:', erro);
 
         return {
             success: false,
+            user: null,
             error: 'Erro ao realizar login.'
         };
+
     }
+
 });
 
 // ==================================================
@@ -130,6 +161,7 @@ ipcMain.handle('loginUser', async (event, dados) => {
 // ==================================================
 
 ipcMain.handle('obterSessaoAtual', (event) => {
+
     const usuario = sessoesAutenticadas.get(event.sender.id);
 
     if (!usuario) {
@@ -142,11 +174,12 @@ ipcMain.handle('obterSessaoAtual', (event) => {
         autenticado: true,
         usuario: {
             nome: usuario.nome,
-            email: usuario.email
+            email: usuario.email,
+            tipo: usuario.tipo
         }
     };
-});
 
+});
 
 // ==================================================
 // ENVIAR RECLAMAÇÃO
@@ -157,7 +190,7 @@ ipcMain.handle(
     async (event, reclamacao) => {
 
         try {
-            // Verifica se existe uma sessão autenticada
+
             const usuario = sessoesAutenticadas.get(event.sender.id);
 
             if (!usuario) {
@@ -167,7 +200,6 @@ ipcMain.handle(
                 };
             }
 
-            // Valida o conteúdo
             if (typeof reclamacao !== 'string') {
                 return {
                     sucesso: false,
@@ -183,13 +215,13 @@ ipcMain.handle(
                     mensagem: 'A reclamação deve possuir entre 5 e 5000 caracteres.'
                 };
             }
+
             console.log('Verificação dos dados da reclamação:', {
                 possuiNome: Boolean(usuario.nome),
                 possuiEmail: Boolean(usuario.email),
                 possuiReclamacao: Boolean(texto)
             });
 
-            // Envia utilizando os dados da sessão
             await enviarReclamacaoEmail({
                 nome: usuario.nome,
                 email: usuario.email,
@@ -202,17 +234,18 @@ ipcMain.handle(
             };
 
         } catch (erro) {
+
             console.error('Erro ao enviar reclamação:', erro);
 
             return {
                 sucesso: false,
                 mensagem: 'Não foi possível enviar a reclamação.'
             };
+
         }
+
     }
 );
-
-
 
 // ==================================================
 // SOLICITAR CÓDIGO DE RECUPERAÇÃO
@@ -222,10 +255,10 @@ ipcMain.handle(
     'verificarEmailGestorSeguranca',
     async (_event, { email, tipoUser }) => {
 
-        // Identifica em qual etapa ocorreu a falha
         let etapa = 'validar o e-mail';
 
         try {
+
             if (
                 typeof email !== 'string' ||
                 !email.trim() ||
@@ -239,7 +272,7 @@ ipcMain.handle(
 
             email = email.trim();
 
-            // 1. Verifica se o e-mail existe
+            // Verifica se o e-mail existe
             const situacao =
                 await verificarEmailGestorSeguranca(email, tipoUser);
 
@@ -250,12 +283,12 @@ ipcMain.handle(
                 };
             }
 
-            // 2. Gera o código de seis dígitos
+            // Gera o código de seis dígitos
             etapa = 'gerar o código';
 
             const codigo = randomInt(100000, 1000000).toString();
 
-            // 3. Salva o código e sua validade no banco
+            // Salva o código no banco
             etapa = 'salvar o código no banco de dados';
 
             const salvo = await salvarCodigoRecuperacao(
@@ -271,14 +304,12 @@ ipcMain.handle(
                 };
             }
 
-            // 4. Envia o código por e-mail
+            // Envia o código por e-mail
             etapa = 'enviar o e-mail';
 
             await enviarCodigoEmail(email, codigo);
 
-            console.log(
-                'Código de recuperação enviado com sucesso.'
-            );
+            console.log('Código de recuperação enviado com sucesso.');
 
             return {
                 sucesso: true,
@@ -286,16 +317,16 @@ ipcMain.handle(
             };
 
         } catch (erro) {
-            console.error(
-                `Erro ao ${etapa}:`,
-                erro
-            );
+
+            console.error(`Erro ao ${etapa}:`, erro);
 
             return {
                 sucesso: false,
                 mensagem: `Falha ao ${etapa}. Consulte o terminal do Electron.`
             };
+
         }
+
     }
 );
 
@@ -308,6 +339,7 @@ ipcMain.handle(
     async (_event, { email, tipoUser, codigo }) => {
 
         try {
+
             if (
                 typeof email !== 'string' ||
                 typeof codigo !== 'string' ||
@@ -333,6 +365,7 @@ ipcMain.handle(
             };
 
         } catch (erro) {
+
             console.error(
                 'Erro na validação do código de recuperação:',
                 erro
@@ -342,7 +375,9 @@ ipcMain.handle(
                 sucesso: false,
                 mensagem: 'Erro ao validar o código. Consulte o terminal.'
             };
+
         }
+
     }
 );
 
@@ -355,6 +390,7 @@ ipcMain.handle(
     async (_event, { email, tipoUser, codigo, novaSenha }) => {
 
         try {
+
             if (
                 typeof email !== 'string' ||
                 typeof codigo !== 'string' ||
@@ -389,6 +425,7 @@ ipcMain.handle(
             };
 
         } catch (erro) {
+
             console.error(
                 'Erro na atualização da senha:',
                 erro
@@ -398,6 +435,8 @@ ipcMain.handle(
                 sucesso: false,
                 mensagem: 'Erro ao atualizar a senha. Consulte o terminal.'
             };
+
         }
+
     }
 );

@@ -1,52 +1,79 @@
 
-// Chamamos o arquivo de conexão com o banco de dados
-const pool = require("./connection.js");
+const pool = require('./connection.js');
+
+// ==================================================
+// REALIZAR LOGIN
+// ==================================================
 
 async function loginUser(email, senha) {
 
-  const sql = `
-        SELECT
-            email_seguranca AS email,
-            nome_seguranca AS nome,
-            'seguranca' AS tipo
-        FROM seguranca
-        WHERE email_seguranca = ? AND senha_seguranca = ?
+    try {
 
-        UNION ALL
+        const sql = `
+            SELECT
+                email_seguranca AS email,
+                nome_seguranca AS nome,
+                'seguranca' AS tipo
+            FROM seguranca
+            WHERE email_seguranca = ?
+            AND senha_seguranca = ?
 
-        SELECT
-            email_gestor AS email,
-            nome_gestor AS nome,
-            'gestor' AS tipo
-        FROM gestor
-        WHERE email_gestor = ? AND senha_gestor = ?
+            UNION ALL
 
-        LIMIT 1;
-    `;
+            SELECT
+                email_gestor AS email,
+                nome_gestor AS nome,
+                'gestor' AS tipo
+            FROM gestor
+            WHERE email_gestor = ?
+            AND senha_gestor = ?
 
-  // Passamos os quatro parâmetros na ordem correta
-  const [rows] = await pool.query(sql, [
-    email,
-    senha,
-    email,
-    senha
-  ]);
+            LIMIT 1;
+        `;
 
-  // Verificamos se algum usuário foi encontrado
-  if (rows.length === 0) {
-    return {
-      success: false
-    };
-  }
+        // Executa a consulta no banco de dados
+        const [rows] = await pool.query(sql, [
+            email,
+            senha,
+            email,
+            senha
+        ]);
 
-  // Retornamos os dados do usuário encontrado
-  return {
-    success: true,
-    user: rows[0],
-    tipo: rows[0].tipo
-  }
+        // Verifica se o usuário foi encontrado
+        if (rows.length === 0) {
+
+            return {
+                success: false,
+                user: null
+            };
+
+        }
+
+        // Retorna os dados do usuário
+        return {
+            success: true,
+
+            user: {
+                email: rows[0].email,
+                nome: rows[0].nome,
+                tipo: rows[0].tipo
+            }
+        };
+
+    } catch (erro) {
+
+        console.error('Erro no repositório de login:', erro);
+
+        throw erro;
+
+    }
+
 }
 
+// ==================================================
+// EXPORTAR FUNÇÃO
+// ==================================================
+
 module.exports = {
-  loginUser
+    loginUser
 };
