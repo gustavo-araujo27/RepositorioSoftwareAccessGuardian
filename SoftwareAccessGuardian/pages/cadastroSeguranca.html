@@ -20,8 +20,8 @@
             <span class="menu-texto nome-sistema">Access Guardian</span>
         </div>
 
-        <button type="button" class="menu-toggle" id="btnAlternarMenu"
-                aria-label="Recolher menu" aria-expanded="true" title="Recolher menu">
+        <button type="button" class="menu-toggle" id="btnAlternarMenu" aria-label="Recolher menu" aria-expanded="true"
+            title="Recolher menu">
             <span class="seta-menu" id="setaMenu">‹</span>
         </button>
 
@@ -42,14 +42,23 @@
 
             <button type="button" class="menu-link" id="btnSobreNos" title="Sobre nós">
                 <span class="menu-icone" aria-hidden="true">
-                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><path d="M12 8h.01"></path></svg>
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="9"></circle>
+                        <path d="M12 11v5"></path>
+                        <path d="M12 8h.01"></path>
+                    </svg>
                 </span>
                 <span class="menu-texto">Sobre nós</span>
             </button>
 
             <button type="button" class="menu-link" id="btnSuporte" title="Suporte">
                 <span class="menu-icone" aria-hidden="true">
-                    <svg viewBox="0 0 24 24"><path d="M3 13v-2a9 9 0 0 1 18 0v2"></path><path d="M3 13h3v6H5a2 2 0 0 1-2-2v-4Z"></path><path d="M21 13h-3v6h1a2 2 0 0 0 2-2v-4Z"></path><path d="M18 19c-1 2-3 2-5 2"></path></svg>
+                    <svg viewBox="0 0 24 24">
+                        <path d="M3 13v-2a9 9 0 0 1 18 0v2"></path>
+                        <path d="M3 13h3v6H5a2 2 0 0 1-2-2v-4Z"></path>
+                        <path d="M21 13h-3v6h1a2 2 0 0 0 2-2v-4Z"></path>
+                        <path d="M18 19c-1 2-3 2-5 2"></path>
+                    </svg>
                 </span>
                 <span class="menu-texto">Suporte</span>
             </button>
@@ -61,48 +70,173 @@
 
     <main class="main-content">
         <!-- Painel original de configurações, agora aberto pelo menu lateral -->
-        <div class="campoConfig" id="campoConfig" aria-hidden="true">
+        <div class="campoConfig2" id="campoConfig2" aria-hidden="true">
             <button id="btnFecharMenu" class="btnFecharMenu" aria-label="Fechar configurações" type="button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
             </button>
 
 
             <ul class="itensConfig">
                 <li class="itemTextConfig">Configurações</li>
-                <li class="itemTextModoIluminacao"><p class="textModoIluminacao">Modo de iluminação</p></li>
+                <li class="itemTextModoIluminacao">
+                    <p class="textModoIluminacao">Modo de iluminação</p>
+                </li>
                 <li class="itemModoIluminacao">
                     <select name="modoIluminacao" id="modoIluminacao">
                         <option value="claro">Claro</option>
                         <option value="escuro">Escuro</option>
                     </select>
                 </li>
-                <li class="itemTextAcessibilidaDe"><p class="textAcessibilidade">Acessibilidade</p></li>
+                <li class="itemTextAcessibilidaDe">
+                    <p class="textAcessibilidade">Acessibilidade</p>
+                </li>
                 <li class="itemConfig1">Configuração 1</li>
                 <li class="itemConfig2">Configuração 2</li>
                 <li class="itemConfig3">Configuração 3</li>
                 <li class="itemConfig4">Configuração 4</li>
             </ul>
         </div>
-        
 
-        <!-- Painel Sobre nós -->
-        <section class="painel-info" id="painelSobreNos" aria-hidden="true" aria-labelledby="tituloSobreNos">
-            <button type="button" class="fechar-painel-info" data-fechar-painel aria-label="Fechar Sobre nós">×</button>
-            <h2 id="tituloSobreNos">Sobre nós</h2>
-            <p>O Access Guardian é um projeto voltado ao gerenciamento e à verificação de acesso por meio de cartões RFID.</p>
-            <p>O sistema integra a interface de controle com um leitor de cartões e uma catraca, ajudando a visualizar o status de acesso.</p>
-        </section>
+
+        
+<!-- Painel Sobre nós -->
+<section class="painel-info" id="painelSobreNos"
+    aria-hidden="true" aria-labelledby="tituloSobreNos">
+
+    <button type="button" class="fechar-painel-info"
+        data-fechar-painel aria-label="Fechar Sobre nós">×</button>
+
+    <h2 id="tituloSobreNos">Sobre nós</h2>
+
+    <p class="descricao-sobre-nos">
+        Conheça melhor o Access Guardian, suas funcionalidades
+        e os recursos utilizados no gerenciamento de acesso.
+    </p>
+
+    <div class="faq-sobre-nos">
+
+        <details class="faq-item">
+            <summary>O que é o Access Guardian</summary>
+            <p>
+                O Access Guardian é um sistema desenvolvido para
+                auxiliar no gerenciamento e na verificação de acesso
+                por meio de cartões RFID.
+            </p>
+        </details>
+
+        <details class="faq-item">
+            <summary>Qual é a finalidade do sistema</summary>
+            <p>
+                O sistema tem como finalidade facilitar o controle
+                de entrada e saída, permitindo identificar usuários
+                e verificar suas permissões de acesso.
+            </p>
+        </details>
+
+        <details class="faq-item">
+            <summary>Como funciona a identificação por RFID</summary>
+            <p>
+                O usuário aproxima seu cartão RFID do leitor.
+                O sistema captura o código de identificação do cartão
+                e consulta as informações cadastradas no banco de dados.
+            </p>
+        </details>
+
+        <details class="faq-item">
+            <summary>Quais tecnologias são utilizadas</summary>
+            <p>
+                O projeto utiliza Electron, JavaScript, banco de dados
+                MariaDB, Arduino, leitor RFID MFRC522 e servo motor
+                para simular o funcionamento de uma catraca.
+            </p>
+        </details>
+
+        <details class="faq-item">
+            <summary>Quem pode utilizar o Access Guardian</summary>
+            <p>
+                O sistema possui funcionalidades destinadas aos
+                usuários com perfil de segurança e de gestor,
+                respeitando as permissões de cada perfil.
+            </p>
+        </details>
+
+        <details class="faq-item">
+            <summary>Como o sistema verifica a autorização</summary>
+            <p>
+                Após a leitura do cartão, o sistema verifica se a
+                credencial está cadastrada e autorizada. Em seguida,
+                apresenta o resultado da verificação e controla
+                a abertura ou o bloqueio da catraca.
+            </p>
+        </details>
+
+        <details class="faq-item">
+            <summary>O que acontece quando o acesso é negado</summary>
+            <p>
+                Quando a credencial não possui autorização,
+                o sistema informa que o acesso foi negado
+                e mantém a catraca bloqueada.
+            </p>
+        </details>
+
+    </div>
+</section>
+
 
         <!-- Painel Suporte -->
-        <section class="painel-info" id="painelSuporte" aria-hidden="true" aria-labelledby="tituloSuporte">
-            <button type="button" class="fechar-painel-info" data-fechar-painel aria-label="Fechar Suporte">×</button>
-            <h2 id="tituloSuporte">Suporte</h2>
-            <p>Precisa de ajuda para utilizar o Access Guardian?</p>
-            <p>Entre em contato com o responsável pelo projeto ou com a equipe de suporte da sua instituição.</p>
-            <p class="aviso-suporte">Configure aqui os dados reais de contato da equipe quando estiverem disponíveis.</p>
-        </section>
+        
+<!-- Painel Suporte -->
+<section class="painel-info" id="painelSuporte"
+    aria-hidden="true" aria-labelledby="tituloSuporte">
+
+    <button type="button" class="fechar-painel-info" data-fechar-painel aria-label="Fechar Suporte">×</button>
+
+    <h2 id="tituloSuporte">Suporte</h2>
+    <p>Precisa de ajuda para utilizar o Access Guardian?</p>
+    <p>
+        Nossa equipe está disponível para receber suas dúvidas,
+        sugestões e reclamações.
+    </p>
+
+    <div class="aviso-suporte" id="avisoSuporte">
+
+        <p><strong>Envie sua reclamação</strong></p>
+
+        <!-- Aviso de autenticação -->
+        <p id="avisoLoginSuporte" hidden>
+            Para enviar uma reclamação, entre primeiro
+            na sua conta do Access Guardian.
+        </p>
+
+        <!-- Formulário de reclamação -->
+        <form id="formReclamacao" hidden>
+            <textarea
+                id="campoReclamacao"
+                class="input-reclamacao"
+                placeholder="Digite sua reclamação..."
+                minlength="5"
+                maxlength="5000"
+                rows="5"
+                required
+            ></textarea>
+
+            <button
+                type="submit"
+                class="bnt-enviar"
+                id="btnEnviarReclamacao">
+                Enviar
+            </button>
+        </form>
+        <!-- Mensagem de retorno -->
+        <p id="statusReclamacao" role="status" aria-live="polite">
+        </p>
+    </div>
+</section>
+<!--Fim menu Lateral-->
 
         <section class="cadastro">
             <h1>Cadastro</h1>

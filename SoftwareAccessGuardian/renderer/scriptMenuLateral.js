@@ -87,6 +87,28 @@
             });
         }
 
+
+    // FAQ - Sobre nós
+    const perguntasFAQ = document.querySelectorAll(
+        "#painelSobreNos .faq-item"
+    );
+
+    perguntasFAQ.forEach((pergunta) => {
+        pergunta.addEventListener("toggle", () => {
+
+            if (pergunta.open) {
+            perguntasFAQ.forEach((outraPergunta) => {
+                if (outraPergunta !== pergunta) {
+                    outraPergunta.open = false;
+                }
+            });
+            }
+
+        });
+    });
+
+
+
         // Fechar ao clicar no fundo escurecido.
         if (overlay) {
             overlay.addEventListener("click", fecharPaineis);

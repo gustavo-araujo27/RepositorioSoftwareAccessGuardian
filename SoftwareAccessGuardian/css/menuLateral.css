@@ -197,10 +197,103 @@ body.menu-recolhido .main-content {
     width: 100%;
 }
 
-.txt-sobre-nos{
-    border-top: 1px solid #eaf0fa;
-    margin-top: 10px;
+
+/* =========================================
+   FAQ - PAINEL SOBRE NÓS
+========================================= */
+
+.descricao-sobre-nos {
+    color: #46546a;
+    font-size: 14px;
+    margin-bottom: 22px;
 }
+
+.faq-sobre-nos {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.faq-item {
+    background: #ffffff;
+    border: 1px solid #dce5f2;
+    border-radius: 9px;
+    overflow: hidden;
+    transition: border-color .25s ease,
+                box-shadow .25s ease;
+}
+
+.faq-item:hover {
+    border-color: var(--ag-azul);
+}
+
+.faq-item[open] {
+    border-color: var(--ag-azul);
+    box-shadow: 0 3px 10px #1d478f15;
+}
+
+.faq-item summary {
+    position: relative;
+    padding: 15px 40px 15px 14px;
+    color: var(--ag-azul);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5;
+    cursor: pointer;
+    list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-item summary::after {
+    content: "+";
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--ag-laranja);
+    font-size: 22px;
+    font-weight: 400;
+    transition: transform .2s ease;
+}
+
+.faq-item[open] summary::after {
+    content: "−";
+}
+
+.faq-item p {
+    margin: 0;
+    padding: 0 14px 16px;
+    color: #526078;
+    font-size: 13px;
+    line-height: 1.7;
+    border-top: 1px solid #eaf0fa;
+    padding-top: 12px;
+}
+
+/* Tema escuro */
+
+body.tema-escuro .faq-item {
+    background: #202f46;
+    border-color: #3a4d68;
+}
+
+body.tema-escuro .faq-item summary {
+    color: #f3f6fb;
+}
+
+body.tema-escuro .faq-item p,
+body.tema-escuro .descricao-sobre-nos {
+    color: #d0d9e8;
+}
+
+body.tema-escuro .faq-item[open] {
+    border-color: var(--ag-laranja);
+}
+
 
 /* Evita que os painéis ultrapassem telas menores */
 @media (max-width: 700px) {
